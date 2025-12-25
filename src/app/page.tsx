@@ -1,7 +1,33 @@
+'use client';
+
 import storeFrontImage from '../assets/img/store_front.jpg';
 import bakeryLogo from '../assets/img/bakeryLogo.png';
+import croissantImage from '../assets/img/croissant .jpg';
+import sourdoughImage from '../assets/img/sourdoughBread.jpg';
+import muffinsImage from '../assets/img/muffins.jpg';
+import pastriesImage from '../assets/img/pastries.jpg';
+import cinnamonRollsImage from '../assets/img/cinnamonRolls.jpg';
+import applePieImage from '../assets/img/applePie.jpg';
+import { useState } from 'react';
 
 export default function Home() {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleSendMessage = (e: React.FormEvent) => {
+    e.preventDefault();
+    setShowModal(true);
+  };
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offsetTop = element.offsetTop - 60; // Offset to account for fixed navbar
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  };
   return (
     <>
       {/* Navigation Bar */}
@@ -9,19 +35,29 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 py-1">
           <div className="flex items-center justify-center gap-4">
             {/* Menu Button */}
-            <button className="text-orange-700 hover:underline transition-all duration-300 text-lg" style={{fontFamily: 'var(--font-dancing-script)'}}>
+            <button 
+              onClick={() => scrollToSection('menu')}
+              className="text-orange-700 hover:underline transition-all duration-300 text-lg" 
+              style={{fontFamily: 'var(--font-dancing-script)'}}
+            >
               Menu
             </button>
             
             {/* Logo */}
-            <img 
-              src={bakeryLogo.src} 
-              alt="Bakery Logo" 
-              className="w-14 h-14 object-contain"
-            />
+            <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+              <img 
+                src={bakeryLogo.src} 
+                alt="Bakery Logo" 
+                className="w-14 h-14 object-contain hover:scale-105 transition-transform duration-300 cursor-pointer"
+              />
+            </button>
             
             {/* Contact Button */}
-            <button className="text-orange-700 hover:underline transition-all duration-300 text-lg" style={{fontFamily: 'var(--font-dancing-script)'}}>
+            <button 
+              onClick={() => scrollToSection('contact')}
+              className="text-orange-700 hover:underline transition-all duration-300 text-lg" 
+              style={{fontFamily: 'var(--font-dancing-script)'}}
+            >
               Contact
             </button>
           </div>
@@ -58,7 +94,7 @@ export default function Home() {
       </div>
 
       {/* Menu Section */}
-      <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100 py-16">
+      <div id="menu" className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100 py-16">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-7xl font-bold text-amber-900 mb-16 text-center" style={{fontFamily: 'var(--font-dancing-script)'}}>
             Menu
@@ -66,138 +102,174 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {/* Croissant Card */}
-            <div className="bg-white rounded-2xl shadow-2xl border border-amber-200 overflow-hidden">
-              <div className="w-full h-48 bg-amber-100 flex items-center justify-center border-2 border-dashed border-amber-300 m-1 rounded-xl">
-                <span className="text-amber-600 font-semibold">Croissant Image</span>
+            <div className="bg-white rounded-2xl shadow-2xl border border-amber-200 overflow-hidden h-[520px] flex flex-col hover:shadow-3xl hover:scale-105 transition-all duration-300 hover:border-amber-300">
+              <div className="h-48 m-1 rounded-xl overflow-hidden">
+                <img 
+                  src={croissantImage.src}
+                  alt="Fresh Butter Croissants"
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <div className="p-8 pt-2">
-                <h3 className="text-3xl font-bold text-amber-900 mb-4 text-center" style={{fontFamily: 'var(--font-dancing-script)'}}>
-                  Fresh Butter Croissants
-                </h3>
-              <p className="text-amber-800 text-base leading-relaxed text-center mb-4">
-                Flaky, golden pastries made with premium European butter. Each croissant is hand-rolled and baked to perfection, 
-                creating layers of buttery goodness that melt in your mouth.
-              </p>
-              <div className="text-center">
-                <span className="inline-block bg-amber-200 text-amber-900 font-bold text-xl px-4 py-2 rounded-full">
-                  $3.50 each
-                </span>
-              </div>
+              <div className="p-8 pt-2 flex flex-col justify-between flex-grow">
+                <div>
+                  <h3 className="text-3xl font-bold text-amber-900 mb-4 text-center" style={{fontFamily: 'var(--font-dancing-script)'}}>
+                    Fresh Butter Croissants
+                  </h3>
+                  <p className="text-amber-800 text-base leading-relaxed text-center mb-4">
+                    Flaky, golden pastries made with premium European butter. Each croissant is hand-rolled and baked to perfection, 
+                    creating layers of buttery goodness that melt in your mouth.
+                  </p>
+                </div>
+                <div className="text-center mt-auto">
+                  <span className="inline-block bg-amber-200 text-amber-900 font-bold text-xl px-4 py-2 rounded-full">
+                    $3.50 each
+                  </span>
+                </div>
               </div>
             </div>
 
             {/* Artisan Bread Card */}
-            <div className="bg-white rounded-2xl shadow-2xl border border-orange-200 overflow-hidden">
-              <div className="w-full h-48 bg-orange-100 flex items-center justify-center border-2 border-dashed border-orange-300 m-1 rounded-xl">
-                <span className="text-orange-600 font-semibold">Sourdough Image</span>
+            <div className="bg-white rounded-2xl shadow-2xl border border-teal-300 overflow-hidden h-[520px] flex flex-col hover:shadow-3xl hover:scale-105 transition-all duration-300 hover:border-teal-400">
+              <div className="h-48 m-1 rounded-xl overflow-hidden">
+                <img 
+                  src={sourdoughImage.src}
+                  alt="Artisan Sourdough Bread"
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <div className="p-8 pt-2">
-                <h3 className="text-3xl font-bold text-orange-900 mb-4 text-center" style={{fontFamily: 'var(--font-dancing-script)'}}>
-                  Artisan Sourdough Bread
-                </h3>
-              <p className="text-orange-800 text-base leading-relaxed text-center mb-4">
-                Our signature sourdough features a crispy crust and tangy, chewy interior. Made with our 20-year-old starter 
-                and slowly fermented for 24 hours.
-              </p>
-              <div className="text-center">
-                <span className="inline-block bg-orange-200 text-orange-900 font-bold text-xl px-4 py-2 rounded-full">
-                  $6.95 per loaf
-                </span>
-              </div>
+              <div className="p-8 pt-2 flex flex-col justify-between flex-grow">
+                <div>
+                  <h3 className="text-3xl font-bold text-teal-900 mb-4 text-center" style={{fontFamily: 'var(--font-dancing-script)'}}>
+                    Artisan Sourdough Bread
+                  </h3>
+                  <p className="text-teal-800 text-base leading-relaxed text-center mb-4">
+                    Our signature sourdough features a crispy crust and tangy, chewy interior. Made with our 20-year-old starter 
+                    and slowly fermented for 24 hours.
+                  </p>
+                </div>
+                <div className="text-center mt-auto">
+                  <span className="inline-block bg-teal-200 text-teal-900 font-bold text-xl px-4 py-2 rounded-full">
+                    $6.95 per loaf
+                  </span>
+                </div>
               </div>
             </div>
 
             {/* Chocolate Muffins Card */}
-            <div className="bg-white rounded-2xl shadow-2xl border border-yellow-200 overflow-hidden">
-              <div className="w-full h-48 bg-yellow-100 flex items-center justify-center border-2 border-dashed border-yellow-300 m-1 rounded-xl">
-                <span className="text-yellow-600 font-semibold">Muffin Image</span>
+            <div className="bg-white rounded-2xl shadow-2xl border border-purple-300 overflow-hidden h-[520px] flex flex-col hover:shadow-3xl hover:scale-105 transition-all duration-300 hover:border-purple-400">
+              <div className="h-48 m-1 rounded-xl overflow-hidden">
+                <img 
+                  src={muffinsImage.src}
+                  alt="Double Chocolate Muffins"
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <div className="p-8 pt-2">
-                <h3 className="text-3xl font-bold text-yellow-900 mb-4 text-center" style={{fontFamily: 'var(--font-dancing-script)'}}>
-                  Double Chocolate Muffins
-                </h3>
-              <p className="text-yellow-800 text-base leading-relaxed text-center mb-4">
-                Rich, moist muffins loaded with Belgian dark chocolate chips and cocoa. Made with organic eggs and real vanilla extract for the ultimate indulgence.
-              </p>
-              <div className="text-center">
-                <span className="inline-block bg-yellow-200 text-yellow-900 font-bold text-xl px-4 py-2 rounded-full">
-                  $4.25 each
-                </span>
-              </div>
+              <div className="p-8 pt-2 flex flex-col justify-between flex-grow">
+                <div>
+                  <h3 className="text-3xl font-bold text-purple-900 mb-4 text-center" style={{fontFamily: 'var(--font-dancing-script)'}}>
+                    Double Chocolate Muffins
+                  </h3>
+                  <p className="text-purple-800 text-base leading-relaxed text-center mb-4">
+                    Rich, moist muffins loaded with Belgian dark chocolate chips and cocoa. Made with organic eggs and real vanilla extract for the ultimate indulgence.
+                  </p>
+                </div>
+                <div className="text-center mt-auto">
+                  <span className="inline-block bg-purple-200 text-purple-900 font-bold text-xl px-4 py-2 rounded-full">
+                    $4.25 each
+                  </span>
+                </div>
               </div>
             </div>
 
             {/* Danish Pastries Card */}
-            <div className="bg-white rounded-2xl shadow-2xl border border-red-200 overflow-hidden">
-              <div className="w-full h-48 bg-red-100 flex items-center justify-center border-2 border-dashed border-red-300 m-1 rounded-xl">
-                <span className="text-red-600 font-semibold">Danish Image</span>
+            <div className="bg-white rounded-2xl shadow-2xl border border-pink-300 overflow-hidden h-[520px] flex flex-col hover:shadow-3xl hover:scale-105 transition-all duration-300 hover:border-pink-400">
+              <div className="h-48 m-1 rounded-xl overflow-hidden">
+                <img 
+                  src={pastriesImage.src}
+                  alt="Fruit Danish Pastries"
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <div className="p-8 pt-2">
-                <h3 className="text-3xl font-bold text-red-900 mb-4 text-center" style={{fontFamily: 'var(--font-dancing-script)'}}>
-                  Fruit Danish Pastries
-                </h3>
-              <p className="text-red-800 text-base leading-relaxed text-center mb-4">
-                Delicate puff pastry filled with seasonal fruits and cream cheese. Choose from cherry, apple cinnamon, or mixed berry varieties.
-              </p>
-              <div className="text-center">
-                <span className="inline-block bg-red-200 text-red-900 font-bold text-xl px-4 py-2 rounded-full">
-                  $3.95 each
-                </span>
-              </div>
+              <div className="p-8 pt-2 flex flex-col justify-between flex-grow">
+                <div>
+                  <h3 className="text-3xl font-bold text-pink-900 mb-4 text-center" style={{fontFamily: 'var(--font-dancing-script)'}}>
+                    Fruit Danish Pastries
+                  </h3>
+                  <p className="text-pink-800 text-base leading-relaxed text-center mb-4">
+                    Delicate puff pastry filled with seasonal fruits and cream cheese. Choose from cherry, apple cinnamon, or mixed berry varieties.
+                  </p>
+                </div>
+                <div className="text-center mt-auto">
+                  <span className="inline-block bg-pink-200 text-pink-900 font-bold text-xl px-4 py-2 rounded-full">
+                    $3.95 each
+                  </span>
+                </div>
               </div>
             </div>
 
             {/* Cinnamon Rolls Card */}
-            <div className="bg-white rounded-2xl shadow-2xl border border-rose-200 overflow-hidden">
-              <div className="w-full h-48 bg-rose-100 flex items-center justify-center border-2 border-dashed border-rose-300 m-1 rounded-xl">
-                <span className="text-rose-600 font-semibold">Cinnamon Roll Image</span>
+            <div className="bg-white rounded-2xl shadow-2xl border border-orange-300 overflow-hidden h-[520px] flex flex-col hover:shadow-3xl hover:scale-105 transition-all duration-300 hover:border-orange-400">
+              <div className="h-48 m-1 rounded-xl overflow-hidden">
+                <img 
+                  src={cinnamonRollsImage.src}
+                  alt="Classic Cinnamon Rolls"
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <div className="p-8 pt-2">
-                <h3 className="text-3xl font-bold text-rose-900 mb-4 text-center" style={{fontFamily: 'var(--font-dancing-script)'}}>
-                  Classic Cinnamon Rolls
-                </h3>
-              <p className="text-rose-800 text-base leading-relaxed text-center mb-4">
-                Warm, fluffy rolls swirled with cinnamon sugar and topped with our signature cream cheese glaze. Baked fresh every two hours.
-              </p>
-              <div className="text-center">
-                <span className="inline-block bg-rose-200 text-rose-900 font-bold text-xl px-4 py-2 rounded-full">
-                  $4.75 each
-                </span>
-              </div>
+              <div className="p-8 pt-2 flex flex-col justify-between flex-grow">
+                <div>
+                  <h3 className="text-3xl font-bold text-orange-900 mb-4 text-center" style={{fontFamily: 'var(--font-dancing-script)'}}>
+                    Classic Cinnamon Rolls
+                  </h3>
+                  <p className="text-orange-800 text-base leading-relaxed text-center mb-4">
+                    Warm, fluffy rolls swirled with cinnamon sugar and topped with our signature cream cheese glaze. Baked fresh every two hours.
+                  </p>
+                </div>
+                <div className="text-center mt-auto">
+                  <span className="inline-block bg-orange-200 text-orange-900 font-bold text-xl px-4 py-2 rounded-full">
+                    $4.75 each
+                  </span>
+                </div>
               </div>
             </div>
 
             {/* Apple Pie Card */}
-            <div className="bg-white rounded-2xl shadow-2xl border border-green-200 overflow-hidden">
-              <div className="w-full h-48 bg-green-100 flex items-center justify-center border-2 border-dashed border-green-300 m-1 rounded-xl">
-                <span className="text-green-600 font-semibold">Apple Pie Image</span>
+            <div className="bg-white rounded-2xl shadow-2xl border border-emerald-300 overflow-hidden h-[520px] flex flex-col hover:shadow-3xl hover:scale-105 transition-all duration-300 hover:border-emerald-400">
+              <div className="h-48 m-1 rounded-xl overflow-hidden">
+                <img 
+                  src={applePieImage.src}
+                  alt="Traditional Apple Pie"
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <div className="p-8 pt-2">
-                <h3 className="text-3xl font-bold text-green-900 mb-4 text-center" style={{fontFamily: 'var(--font-dancing-script)'}}>
-                  Traditional Apple Pie
-                </h3>
-              <p className="text-green-800 text-base leading-relaxed text-center mb-4">
-                Made with locally sourced Granny Smith apples, warm spices, and our famous flaky pie crust. Served with a scoop of vanilla ice cream.
-              </p>
-              <div className="text-center">
-                <span className="inline-block bg-green-200 text-green-900 font-bold text-xl px-4 py-2 rounded-full">
-                  $18.50 whole pie
-                </span>
-              </div>
+              <div className="p-8 pt-2 flex flex-col justify-between flex-grow">
+                <div>
+                  <h3 className="text-3xl font-bold text-emerald-900 mb-4 text-center" style={{fontFamily: 'var(--font-dancing-script)'}}>
+                    Traditional Apple Pie
+                  </h3>
+                  <p className="text-emerald-800 text-base leading-relaxed text-center mb-4">
+                    Made with locally sourced Granny Smith apples, warm spices, and our famous flaky pie crust. Served with a scoop of vanilla ice cream.
+                  </p>
+                </div>
+                <div className="text-center mt-auto">
+                  <span className="inline-block bg-emerald-200 text-emerald-900 font-bold text-xl px-4 py-2 rounded-full">
+                    $18.50 whole pie
+                  </span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
       {/* Contact Us Section */}
-      <div className="min-h-screen bg-gradient-to-br from-amber-100 to-amber-50 flex items-center justify-center py-16">
+      <div id="contact" className="min-h-screen bg-gradient-to-br from-amber-100 to-amber-50 flex items-center justify-center py-16">
         <div className="max-w-2xl mx-auto px-6 w-full">
           <h2 className="text-7xl font-bold text-amber-900 mb-12 text-center" style={{fontFamily: 'var(--font-dancing-script)'}}>
             Contact Us
           </h2>
           
           <div className="bg-white rounded-2xl p-12 shadow-2xl border border-amber-200">
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSendMessage}>
               <div>
                 <label htmlFor="name" className="block text-lg font-semibold text-amber-900 mb-2">Name</label>
                 <input 
@@ -243,6 +315,34 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* Modal */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-2xl p-12 mx-4 max-w-md w-full shadow-2xl border border-amber-200">
+            <div className="text-center">
+              <h2 className="text-6xl font-bold text-amber-900 mb-6" style={{fontFamily: 'var(--font-dancing-script)'}}>
+                Sorry!
+              </h2>
+              <div className="text-xl text-amber-800">
+                This isn't a real place!
+              </div>
+              <div className="text-sm text-amber-800 mb-8" >
+                 (We are sure it would have been delicious though)
+              </div>
+              <div>
+               
+              </div>
+              <button 
+                onClick={() => setShowModal(false)}
+                className="bg-amber-600 hover:bg-amber-700 text-white font-bold text-lg px-8 py-3 rounded-full transition-colors duration-300 shadow-lg"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
