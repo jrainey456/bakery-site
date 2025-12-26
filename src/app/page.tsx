@@ -9,9 +9,73 @@ import pastriesImage from '../assets/img/pastries.jpg';
 import cinnamonRollsImage from '../assets/img/cinnamonRolls.jpg';
 import applePieImage from '../assets/img/applePie.jpg';
 import { useState } from 'react';
+import RecipeCard from '../components/RecipeCard';
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
+
+  const menuItems = [
+    {
+      image: croissantImage,
+      imageAlt: "Fresh Butter Croissants",
+      title: "Fresh Butter Croissants",
+      description: "Delicately flaky, golden pastries crafted with the finest European butter. Each croissant is lovingly hand-rolled and baked to heavenly perfection, creating silky layers of buttery bliss that simply melt on your tongue.",
+      price: "$3.50 each",
+      borderColor: "border-amber-200",
+      hoverBorderColor: "hover:border-amber-300",
+      rotation: "rotate-3"
+    },
+    {
+      image: sourdoughImage,
+      imageAlt: "Artisan Sourdough Bread",
+      title: "Artisan Sourdough Bread",
+      description: "Our treasured sourdough features a beautifully crisp crust and delightfully tangy, tender interior. Lovingly crafted with our cherished 20-year-old starter and patiently fermented for 24 graceful hours.",
+      price: "$6.95 per loaf",
+      borderColor: "border-teal-300",
+      hoverBorderColor: "hover:border-teal-400",
+      rotation: "-rotate-2"
+    },
+    {
+      image: muffinsImage,
+      imageAlt: "Double Chocolate Muffins",
+      title: "Double Chocolate Muffins",
+      description: "Luxuriously moist and tender muffins adorned with Belgian dark chocolate chips and velvety cocoa. Crafted with farm-fresh organic eggs and pure vanilla extract for the most divine indulgence.",
+      price: "$4.25 each",
+      borderColor: "border-purple-300",
+      hoverBorderColor: "hover:border-purple-400",
+      rotation: "rotate-3"
+    },
+    {
+      image: pastriesImage,
+      imageAlt: "Fruit Danish Pastries",
+      title: "Fruit Danish Pastries",
+      description: "Gracefully delicate puff pastry filled with luscious seasonal fruits and silky cream cheese. Choose from enchanting cherry, spiced apple cinnamon, or dreamy mixed berry varieties.",
+      price: "$3.95 each",
+      borderColor: "border-pink-300",
+      hoverBorderColor: "hover:border-pink-400",
+      rotation: "-rotate-3"
+    },
+    {
+      image: cinnamonRollsImage,
+      imageAlt: "Classic Cinnamon Rolls",
+      title: "Classic Cinnamon Rolls",
+      description: "Heavenly soft and fluffy rolls elegantly swirled with aromatic cinnamon sugar and crowned with our divine signature cream cheese glaze. Lovingly baked fresh every two hours.",
+      price: "$4.75 each",
+      borderColor: "border-orange-300",
+      hoverBorderColor: "hover:border-orange-400",
+      rotation: "rotate-2"
+    },
+    {
+      image: applePieImage,
+      imageAlt: "Traditional Apple Pie",
+      title: "Traditional Apple Pie",
+      description: "Lovingly crafted with locally sourced Granny Smith apples, delicate warm spices, and our celebrated flaky pie crust. Elegantly served with a generous scoop of creamy vanilla ice cream.",
+      price: "$18.50 whole pie",
+      borderColor: "border-emerald-300",
+      hoverBorderColor: "hover:border-emerald-400",
+      rotation: "-rotate-2"
+    }
+  ];
 
   const handleSendMessage = (e: React.FormEvent) => {
     e.preventDefault();
@@ -100,163 +164,19 @@ export default function Home() {
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-            {/* Croissant Card */}
-            <div className="bg-white rounded-2xl shadow-2xl border border-amber-200 overflow-hidden h-[520px] flex flex-col hover:shadow-3xl hover:scale-105 transition-all duration-300 hover:border-amber-300">
-              <div className="h-48 m-1 rounded-xl overflow-hidden">
-                <img 
-                  src={croissantImage.src}
-                  alt="Fresh Butter Croissants"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-8 pt-2 flex flex-col justify-between flex-grow">
-                <div>
-                  <h3 className="text-3xl font-bold text-amber-900 mb-4 text-center" style={{fontFamily: 'var(--font-dancing-script)'}}>
-                    Fresh Butter Croissants
-                  </h3>
-                  <p className="text-amber-800 text-base leading-relaxed text-center mb-4">
-                    Flaky, golden pastries made with premium European butter. Each croissant is hand-rolled and baked to perfection, 
-                    creating layers of buttery goodness that melt in your mouth.
-                  </p>
-                </div>
-                <div className="text-center mt-auto">
-                  <span className="inline-block bg-amber-200 text-amber-900 font-bold text-xl px-4 py-2 rounded-full">
-                    $3.50 each
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Artisan Bread Card */}
-            <div className="bg-white rounded-2xl shadow-2xl border border-teal-300 overflow-hidden h-[520px] flex flex-col hover:shadow-3xl hover:scale-105 transition-all duration-300 hover:border-teal-400">
-              <div className="h-48 m-1 rounded-xl overflow-hidden">
-                <img 
-                  src={sourdoughImage.src}
-                  alt="Artisan Sourdough Bread"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-8 pt-2 flex flex-col justify-between flex-grow">
-                <div>
-                  <h3 className="text-3xl font-bold text-teal-900 mb-4 text-center" style={{fontFamily: 'var(--font-dancing-script)'}}>
-                    Artisan Sourdough Bread
-                  </h3>
-                  <p className="text-teal-800 text-base leading-relaxed text-center mb-4">
-                    Our signature sourdough features a crispy crust and tangy, chewy interior. Made with our 20-year-old starter 
-                    and slowly fermented for 24 hours.
-                  </p>
-                </div>
-                <div className="text-center mt-auto">
-                  <span className="inline-block bg-teal-200 text-teal-900 font-bold text-xl px-4 py-2 rounded-full">
-                    $6.95 per loaf
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Chocolate Muffins Card */}
-            <div className="bg-white rounded-2xl shadow-2xl border border-purple-300 overflow-hidden h-[520px] flex flex-col hover:shadow-3xl hover:scale-105 transition-all duration-300 hover:border-purple-400">
-              <div className="h-48 m-1 rounded-xl overflow-hidden">
-                <img 
-                  src={muffinsImage.src}
-                  alt="Double Chocolate Muffins"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-8 pt-2 flex flex-col justify-between flex-grow">
-                <div>
-                  <h3 className="text-3xl font-bold text-purple-900 mb-4 text-center" style={{fontFamily: 'var(--font-dancing-script)'}}>
-                    Double Chocolate Muffins
-                  </h3>
-                  <p className="text-purple-800 text-base leading-relaxed text-center mb-4">
-                    Rich, moist muffins loaded with Belgian dark chocolate chips and cocoa. Made with organic eggs and real vanilla extract for the ultimate indulgence.
-                  </p>
-                </div>
-                <div className="text-center mt-auto">
-                  <span className="inline-block bg-purple-200 text-purple-900 font-bold text-xl px-4 py-2 rounded-full">
-                    $4.25 each
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Danish Pastries Card */}
-            <div className="bg-white rounded-2xl shadow-2xl border border-pink-300 overflow-hidden h-[520px] flex flex-col hover:shadow-3xl hover:scale-105 transition-all duration-300 hover:border-pink-400">
-              <div className="h-48 m-1 rounded-xl overflow-hidden">
-                <img 
-                  src={pastriesImage.src}
-                  alt="Fruit Danish Pastries"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-8 pt-2 flex flex-col justify-between flex-grow">
-                <div>
-                  <h3 className="text-3xl font-bold text-pink-900 mb-4 text-center" style={{fontFamily: 'var(--font-dancing-script)'}}>
-                    Fruit Danish Pastries
-                  </h3>
-                  <p className="text-pink-800 text-base leading-relaxed text-center mb-4">
-                    Delicate puff pastry filled with seasonal fruits and cream cheese. Choose from cherry, apple cinnamon, or mixed berry varieties.
-                  </p>
-                </div>
-                <div className="text-center mt-auto">
-                  <span className="inline-block bg-pink-200 text-pink-900 font-bold text-xl px-4 py-2 rounded-full">
-                    $3.95 each
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Cinnamon Rolls Card */}
-            <div className="bg-white rounded-2xl shadow-2xl border border-orange-300 overflow-hidden h-[520px] flex flex-col hover:shadow-3xl hover:scale-105 transition-all duration-300 hover:border-orange-400">
-              <div className="h-48 m-1 rounded-xl overflow-hidden">
-                <img 
-                  src={cinnamonRollsImage.src}
-                  alt="Classic Cinnamon Rolls"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-8 pt-2 flex flex-col justify-between flex-grow">
-                <div>
-                  <h3 className="text-3xl font-bold text-orange-900 mb-4 text-center" style={{fontFamily: 'var(--font-dancing-script)'}}>
-                    Classic Cinnamon Rolls
-                  </h3>
-                  <p className="text-orange-800 text-base leading-relaxed text-center mb-4">
-                    Warm, fluffy rolls swirled with cinnamon sugar and topped with our signature cream cheese glaze. Baked fresh every two hours.
-                  </p>
-                </div>
-                <div className="text-center mt-auto">
-                  <span className="inline-block bg-orange-200 text-orange-900 font-bold text-xl px-4 py-2 rounded-full">
-                    $4.75 each
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Apple Pie Card */}
-            <div className="bg-white rounded-2xl shadow-2xl border border-emerald-300 overflow-hidden h-[520px] flex flex-col hover:shadow-3xl hover:scale-105 transition-all duration-300 hover:border-emerald-400">
-              <div className="h-48 m-1 rounded-xl overflow-hidden">
-                <img 
-                  src={applePieImage.src}
-                  alt="Traditional Apple Pie"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-8 pt-2 flex flex-col justify-between flex-grow">
-                <div>
-                  <h3 className="text-3xl font-bold text-emerald-900 mb-4 text-center" style={{fontFamily: 'var(--font-dancing-script)'}}>
-                    Traditional Apple Pie
-                  </h3>
-                  <p className="text-emerald-800 text-base leading-relaxed text-center mb-4">
-                    Made with locally sourced Granny Smith apples, warm spices, and our famous flaky pie crust. Served with a scoop of vanilla ice cream.
-                  </p>
-                </div>
-                <div className="text-center mt-auto">
-                  <span className="inline-block bg-emerald-200 text-emerald-900 font-bold text-xl px-4 py-2 rounded-full">
-                    $18.50 whole pie
-                  </span>
-                </div>
-              </div>
-            </div>
+            {menuItems.map((item, index) => (
+              <RecipeCard
+                key={index}
+                image={item.image}
+                imageAlt={item.imageAlt}
+                title={item.title}
+                description={item.description}
+                price={item.price}
+                borderColor={item.borderColor}
+                hoverBorderColor={item.hoverBorderColor}
+                rotation={item.rotation}
+              />
+            ))}
           </div>
         </div>
       </div>
