@@ -36,14 +36,27 @@ body {
 
 .polaroid {
   background-color: white;
-  padding: 12px;
-  padding-bottom: 32px;
+  padding: 8px;
+  padding-bottom: 22px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
-  height: 100%;
+  width: 286px;
+  height: 286px;
 }
 
 .polaroid img {
   width: 100%;
+  height: calc(100% - 30px);
   aspect-ratio: 1 / 1;
   object-fit: cover;
+}
+
+.polaroid-black {
+  background-color: white;
+  padding: 8px;
+  padding-bottom: 22px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 286px;
+  height: 286px;
+  position: absolute;
+  z-index: 1;
 }

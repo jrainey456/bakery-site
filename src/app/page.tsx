@@ -112,7 +112,7 @@ export default function Home() {
               <img 
                 src={bakeryLogo.src} 
                 alt="Bakery Logo" 
-                className="w-14 h-14 object-contain hover:scale-105 transition-transform duration-300 cursor-pointer"
+                className="w-11 h-11 object-contain hover:scale-105 transition-transform duration-300 cursor-pointer"
               />
             </button>
             
@@ -130,7 +130,7 @@ export default function Home() {
 
       {/* Hero Section with Storefront Background */}
       <div 
-        className="flex min-h-screen items-center justify-center relative pt-20"
+        className="flex min-h-screen items-center justify-center relative pt-16 sm:pt-20"
         style={{
           backgroundImage: `url(${storeFrontImage.src})`,
           backgroundSize: 'cover',
@@ -139,19 +139,15 @@ export default function Home() {
         }}
       >
         <header className="text-center relative z-10 flex flex-col items-center justify-center w-full">
-          <div className="hero-panel-card rounded-3xl px-12 pt-4 pb-8 shadow-2xl backdrop-blur-md border border-white border-opacity-40">
-            <div className="mb-0.5">
-              <img 
+          <div className="">
+            <img 
                 src={bakeryLogo.src} 
                 alt="Bakery Logo" 
-                className="w-96 h-96 object-contain mx-auto"
+                className="w-32 h-32 sm:w-40 sm:h-40 md:w-60 md:h-60 lg:w-80 lg:h-80 object-contain mx-auto"
               />
-            </div>
-            <div className="mb-4">
-              <h1 className="text-8xl font-bold text-white" style={{fontFamily: 'var(--font-dancing-script)', textShadow: '4px 4px 8px rgba(0,0,0,0.9)'}}>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold text-white pb-8" style={{fontFamily: 'var(--font-dancing-script)', textShadow: '4px 4px 8px rgba(0,0,0,0.9)'}}>
                 Rise and Shine Bakery
               </h1>
-            </div>
           </div>
         </header>
       </div>
@@ -159,7 +155,7 @@ export default function Home() {
       {/* Menu Section */}
       <div id="menu" className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100 py-16">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-7xl font-bold text-amber-900 mb-16 text-center" style={{fontFamily: 'var(--font-dancing-script)'}}>
+          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-amber-900 mb-16 text-center" style={{fontFamily: 'var(--font-dancing-script)'}}>
             Menu
           </h2>
           
@@ -183,7 +179,7 @@ export default function Home() {
       {/* Contact Us Section */}
       <div id="contact" className="min-h-screen bg-gradient-to-br from-amber-100 to-amber-50 flex items-center justify-center py-16">
         <div className="max-w-2xl mx-auto px-6 w-full">
-          <h2 className="text-7xl font-bold text-amber-900 mb-12 text-center" style={{fontFamily: 'var(--font-dancing-script)'}}>
+          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-amber-900 mb-12 text-center" style={{fontFamily: 'var(--font-dancing-script)'}}>
             Contact Us
           </h2>
           
@@ -240,7 +236,7 @@ export default function Home() {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-2xl p-12 mx-4 max-w-md w-full shadow-2xl border border-amber-200">
             <div className="text-center">
-              <h2 className="text-6xl font-bold text-amber-900 mb-6" style={{fontFamily: 'var(--font-dancing-script)'}}>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-amber-900 mb-6" style={{fontFamily: 'var(--font-dancing-script)'}}>
                 Sorry!
               </h2>
               <div className="text-xl text-amber-800">

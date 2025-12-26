@@ -60,15 +60,32 @@ export default function RecipeCard({
   };
   
   const colors = getColorClasses(borderColor);
+  
+  // Function to get opposite rotation
+  const getOppositeRotation = (rotation: string) => {
+    if (rotation.startsWith('-')) {
+      return rotation.substring(1); // Remove the minus sign
+    } else {
+      return '-' + rotation; // Add minus sign
+    }
+  };
+  
+  const oppositeRotation = getOppositeRotation(rotation);
 
   return (
     <div className={`bg-white rounded-2xl shadow-2xl border ${borderColor} flex flex-col hover:shadow-3xl hover:scale-105 transition-all duration-300 ${hoverBorderColor}`}>
-      <div className={`polaroid transform ${rotation}`}>
-          <img 
-            src={image.src}
-            alt={imageAlt}
-          />
+      <div className="relative h-80 m-4 flex items-center justify-center overflow-visible">
+        {/* White polaroid behind */}
+        <div className={`polaroid-black transform ${oppositeRotation}`}>
         </div>
+        {/* Photo polaroid on top */}
+        <div className={`polaroid transform ${rotation} relative z-10`}>
+            <img 
+              src={image.src}
+              alt={imageAlt}
+            />
+          </div>
+      </div>
       <div className="p-8 pt-2 flex flex-col justify-between flex-grow">
         <div>
           <h3 className={`text-3xl font-bold ${colors.title} mb-4 text-center`} style={{fontFamily: 'var(--font-dancing-script)'}}>
