@@ -66,7 +66,7 @@ export default function Home() {
 
       {/* Hero Section with Storefront Background */}
       <div 
-        className="flex min-h-screen items-center justify-center relative"
+        className="flex min-h-screen items-center justify-center relative pt-20"
         style={{
           backgroundImage: `url(${storeFrontImage.src})`,
           backgroundSize: 'cover',
@@ -75,21 +75,20 @@ export default function Home() {
         }}
       >
         <header className="text-center relative z-10 flex flex-col items-center justify-center w-full">
-          <div className="mb-0.5">
-            <img 
-              src={bakeryLogo.src} 
-              alt="Bakery Logo" 
-              className="w-96 h-96 object-contain mx-auto"
-            />
+          <div className="hero-panel-card rounded-3xl px-12 pt-4 pb-8 shadow-2xl backdrop-blur-md border border-white border-opacity-40">
+            <div className="mb-0.5">
+              <img 
+                src={bakeryLogo.src} 
+                alt="Bakery Logo" 
+                className="w-96 h-96 object-contain mx-auto"
+              />
+            </div>
+            <div className="mb-4">
+              <h1 className="text-8xl font-bold text-white" style={{fontFamily: 'var(--font-dancing-script)', textShadow: '4px 4px 8px rgba(0,0,0,0.9)'}}>
+                Rise and Shine Bakery
+              </h1>
+            </div>
           </div>
-          <div className="mb-4">
-            <h1 className="text-8xl font-bold text-white" style={{fontFamily: 'var(--font-dancing-script)', textShadow: '4px 4px 8px rgba(0,0,0,0.9)'}}>
-              Rise and Shine Bakery
-            </h1>
-          </div>
-          <p className="text-2xl text-white font-medium" style={{textShadow: '3px 3px 6px rgba(0,0,0,0.9)'}}>
-            Where Every Bite is Baked with Love
-          </p>
         </header>
       </div>
 
